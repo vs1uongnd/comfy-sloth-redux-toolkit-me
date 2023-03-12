@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Wrapper from "../../wrappers/CartTotals";
 import { formatPrice } from "../../utils/helpers";
 import { Link } from "react-router-dom";
