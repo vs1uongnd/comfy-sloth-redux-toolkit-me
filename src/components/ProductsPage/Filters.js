@@ -42,27 +42,30 @@ const Filters = () => {
     [all_products]
   );
 
-  const getNameValue = useCallback((e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    if (name === "category") {
-      value = e.target.textContent;
-    }
-    if (name === "category-mobile") {
-      name = "category";
-    }
-    if (name === "color") {
-      value = e.target.dataset.color;
-    }
-    if (name === "price") {
-      value = Number(value);
-    }
-    if (name === "shipping") {
-      value = e.target.checked;
-    }
+  const getNameValue = useCallback(
+    (e) => {
+      let name = e.target.name;
+      let value = e.target.value;
+      if (name === "category") {
+        value = e.target.textContent;
+      }
+      if (name === "category-mobile") {
+        name = "category";
+      }
+      if (name === "color") {
+        value = e.target.dataset.color;
+      }
+      if (name === "price") {
+        value = Number(value);
+      }
+      if (name === "shipping") {
+        value = e.target.checked;
+      }
 
-    dispatch(updateFilters({ name, value }));
-  }, []);
+      dispatch(updateFilters({ name, value }));
+    },
+    [dispatch]
+  );
   return (
     <Wrapper>
       <div className="content">

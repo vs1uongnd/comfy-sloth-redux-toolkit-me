@@ -14,7 +14,7 @@ const CartContent = () => {
   useEffect(() => {
     dispatch(countCartTotals());
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  }, [cart, dispatch]);
   return (
     <Wrapper className="section section-center">
       <CartColumns />
