@@ -1,7 +1,7 @@
 import { products_url as url } from "../../utils/constants";
 import axios from "axios";
 
-export const getFeaturedProductsThunk = async (_, thunkAPI) => {
+export const fetchProductsThunk = async (_, thunkAPI) => {
   try {
     const response = await axios.get(url);
     return response.data;

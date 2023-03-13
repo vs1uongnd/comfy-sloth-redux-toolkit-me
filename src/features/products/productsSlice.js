@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getFeaturedProductsThunk } from "./productsThunk";
+import { fetchProductsThunk } from "./productsThunk";
 import { fetchSingleProductThunk } from "./singleProductThunk";
 
 const initialState = {
@@ -13,9 +13,9 @@ const initialState = {
   single_product: {},
 };
 
-export const getFeaturedProducts = createAsyncThunk(
-  "products/getFeaturedProducts",
-  getFeaturedProductsThunk
+export const fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  fetchProductsThunk
 );
 
 export const fetchSingleProduct = createAsyncThunk(
@@ -42,15 +42,17 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getFeaturedProducts.pending, (state) => {
+      .addCase(fetchProducts.pending, (state) => {
         state.products_loading = true;
       })
-      .addCase(getFeaturedProducts.fulfilled, (state, { payload }) => {
+      .addCase(fetchProducts.fulfilled, (state, { payload }) => {
         state.products_loading = false;
-        state.featured_products = payload.slice(0, 3);
+        state.featured_products = payload
+          .filter((product) => product.featured === true)
+          .slice(0, 3);
         state.products = payload;
       })
-      .addCase(getFeaturedProducts.rejected, (state, { payload }) => {
+      .addCase(fetchProducts.rejected, (state, { payload }) => {
         state.products_loading = false;
         state.products_error = payload;
       })

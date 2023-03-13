@@ -6,7 +6,7 @@ import Loading from "../Layout/Loading";
 import Error from "../Layout/Error";
 
 import { loadProducts } from "../../features/filter/filterSlice";
-import { getFeaturedProducts } from "../../features/products/productsSlice";
+import { fetchProducts } from "../../features/products/productsSlice";
 
 const ProductList = () => {
   const { products, products_loading, products_error } = useSelector(
@@ -17,7 +17,7 @@ const ProductList = () => {
 
   // FIXME: logic useEffect & filtered_products.length < 1
   useEffect(() => {
-    dispatch(getFeaturedProducts());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   useEffect(() => {

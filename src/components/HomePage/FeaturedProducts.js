@@ -5,12 +5,12 @@ import Error from "../Layout/Error";
 import Loading from "../Layout/Loading";
 import Product from "../Product";
 import Wrapper from "../../wrappers/FeaturedProducts";
-import { getFeaturedProducts } from "../../features/products/productsSlice";
+import { fetchProducts } from "../../features/products/productsSlice";
 
 const FeaturedProducts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getFeaturedProducts());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   const { products_loading, products_error, featured_products } = useSelector(
